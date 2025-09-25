@@ -20,11 +20,14 @@ export default function putHandleSubmit() {
         });
 
         if (res.ok) {
-          setMsg("Usuário criado com sucesso!");
+          setMsg("Usuário editado com sucesso!");
           form.reset();
         } else {
-          setMsg("Erro ao criar usuário.");
+          setMsg("Erro ao editar usuário.");
         }
+
+        (form.elements.namedItem("nome") as HTMLInputElement).value = formData.get("nome") as string;
+        (form.elements.namedItem("email") as HTMLInputElement).value = formData.get("email") as string;
       }
 
       return {msg, handleSubmit};

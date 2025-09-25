@@ -1,5 +1,6 @@
 "use client"
 
+import DeleteModal from "@/components/DeleteModal";
 import LinkComponent from "@/components/LinkComponent";
 import Link from "next/link";
 import { env } from "process";
@@ -30,8 +31,15 @@ export default function showUsers(){
                         {user.nome} - {user.email}
                         <div className="flex justify-center gap-2">
                             <LinkComponent className="text-orange-500 font-bold" href={"users/edit/" + user.id}>Editar</LinkComponent>
-                            <LinkComponent className="text-red-500 font-bold" href="/">Excluir</LinkComponent>
+                            <button onClick={(e)=>{
+                                e.preventDefault();
+                                const modal = document.getElementById(user.id.toString());
+                                if(modal){
+                                    modal.style.display = "block";
+                                }
+                            }} className="text-red-500 font-bold">Excluir</button>
                         </div>
+                        <DeleteModal id={user.id.toString()}></DeleteModal>
                     </li>
                 ))}
             </ul>
