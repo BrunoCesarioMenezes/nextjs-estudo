@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import LinkComponent from "@/components/LinkComponent";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,9 +26,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} flex antialiased min-h-screen min-w-screen justify-center`}
       >
-        {children}
+        <main className="flex flex-col justify-center items-center text-white gap-4">
+          <div>{children}</div>
+          <LinkComponent className="bg-blue-400 text-white font-bold px-2 py-1 rounded-lg" href="/">Voltar</LinkComponent>
+        </main>
+
       </body>
     </html>
   );
