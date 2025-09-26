@@ -1,10 +1,10 @@
 "use client";
 import Image from "next/image";
 import { useState } from "react";
-import postHandleSubmit from "@/hooks/postHandleSubmit";
+import usePostHandleSubmit from "@/hooks/usePostHandleSubmit";
 
-export default function createUser() {
-  const {msg, handleSubmit} = postHandleSubmit();
+export default function CreateUser() {
+  const {msg, handleSubmit} = usePostHandleSubmit();
 
   return (
     <div className="flex min-w-screen justify-center">

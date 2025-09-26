@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-export default function putHandleSubmit() {
+export default function usePostHandleSubmit() {
     const [msg, setMsg] = useState("");
 
     async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -11,7 +11,7 @@ export default function putHandleSubmit() {
         const formData = new FormData(form);
 
         const res = await fetch(form.action, {
-          method: "PUT",
+          method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             nome: formData.get("nome"),
@@ -20,14 +20,11 @@ export default function putHandleSubmit() {
         });
 
         if (res.ok) {
-          setMsg("Usuário editado com sucesso!");
+          setMsg("Usuário criado com sucesso!");
           form.reset();
         } else {
-          setMsg("Erro ao editar usuário.");
+          setMsg("Erro ao criar usuário.");
         }
-
-        (form.elements.namedItem("nome") as HTMLInputElement).value = formData.get("nome") as string;
-        (form.elements.namedItem("email") as HTMLInputElement).value = formData.get("email") as string;
       }
 
       return {msg, handleSubmit};

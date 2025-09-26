@@ -1,6 +1,8 @@
 import prisma from "@/lib/prisma";
 
-export async function PUT(req : Request, {params}: {params: {id: string}}) {
+export async function PUT(req : Request, context : unknown) {
+    const { params } = context as { params: { id: string } };
+    const id = Number(params.id);
     const body = await req.json();
     const {nome, email} = body;
 
@@ -10,7 +12,7 @@ export async function PUT(req : Request, {params}: {params: {id: string}}) {
 
     try {
         const updatedUser = await prisma.usuario.update({
-            where: {id: Number(params.id)},
+            where: {id: id},
             data: {nome, email},
         });
         return new Response(JSON.stringify(updatedUser), {status: 200});

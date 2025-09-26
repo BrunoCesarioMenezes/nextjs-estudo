@@ -6,7 +6,7 @@ import Link from "next/link";
 import { env } from "process";
 import { useEffect, useState } from "react";
 
-export default function showUsers(){
+export default function ShowUsers(){
     // const users = await fetch( `${process.env.NEXT_PUBLIC_DOMAIN + "api/users"}`, {
     //     method: "GET",
     //     headers: { "Content-Type": "application/json" },
