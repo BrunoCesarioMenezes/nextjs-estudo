@@ -19,7 +19,7 @@ export default function DeleteModal({id} : {id: string}) {
     }
 
     return (
-        <form className="bg-white border-2 border-black" style={{display: "none",
+        <form className="bg-white shadow-lg shadow-neutral-950" style={{display: "none",
             position: "fixed",
             top: "50%",
             left: "50%",
