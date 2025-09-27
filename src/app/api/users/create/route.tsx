@@ -9,6 +9,10 @@ export async function POST(req: Request) {
       return new Response("Nome and email are required", { status: 400 });
     }
 
+    if(email.indexOf('@') === -1){
+      return new Response("Email inválido", { status: 400 });
+    }
+
     const newUser = await prisma.usuario.create({
       data: { nome, email },
     });

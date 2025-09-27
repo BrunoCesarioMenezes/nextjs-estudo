@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export default function DeleteModal({id} : {id: string}) {
+export default function DeleteModal({id, username} : {id: string, username: string}) {
     async function handleDelete(e: React.FormEvent) {
         e.preventDefault();
         const res = await fetch("/api/users/delete/" + id, {
@@ -28,7 +28,7 @@ export default function DeleteModal({id} : {id: string}) {
             padding: "20px",
         }} id={id}>
             <h1 className="text-red-500 font-bold">Excluir usuário</h1>
-            <p>Tem certeza que deseja deletar esse usuário?</p>
+            <p>Tem certeza que deseja deletar {username}?</p>
             <div className="flex gap-4 justify-center mt-4 text-white font-bold">
                 <button onClick={handleDelete} className="bg-red-500 py-1 px-2">Excluir</button>
                 <button onClick={(e)=>{

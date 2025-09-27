@@ -26,8 +26,8 @@ export default function ShowUsers(){
         <div className="flex flex-col gap-4 justify-center items-center">
             <h1 className="font-bold text-lg mb-4">Lista de Usuários</h1>
             <ul className="flex flex-col gap-2 shadow-lg shadow-neutral-950">
-                {users && users.map((user: {id: number, nome: string, email: string}) => (
-                    <li key={user.id} className="text-center px-2 py-1 bg-white text-black rounded-lg">
+                {users && users.map((user: {id: string, nome: string, email: string}) => (
+                    <li key={user.id} className="text-center w-48 min-h-16 max-h-fit p-2  bg-white text-black rounded-sm">
                         {user.nome} - {user.email}
                         <div className="flex justify-center gap-2">
                             <LinkComponent className="text-orange-500 font-bold" href={"users/edit/" + user.id}>Editar</LinkComponent>
@@ -39,7 +39,7 @@ export default function ShowUsers(){
                                 }
                             }} className="text-red-500 font-bold">Excluir</button>
                         </div>
-                        <DeleteModal id={user.id.toString()}></DeleteModal>
+                        <DeleteModal id={user.id.toString()} username={user.nome}></DeleteModal>
                     </li>
                 ))}
             </ul>

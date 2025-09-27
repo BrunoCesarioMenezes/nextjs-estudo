@@ -17,7 +17,7 @@ export default function FormContainer({type, action, handleSubmit, user, msg}: {
           />
           <input
             defaultValue={user?.email}
-            type="text"
+            type="email"
             name="email"
             className="border-2 border-black p-2 rounded"
             placeholder="Email"
